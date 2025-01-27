@@ -48,4 +48,10 @@ export class AdvertismentController {
     const result = await this.advertismentService.deleteById(id);
     return { message: 'Delete', result };
   }
+
+  @HttpCode(200)
+  @Get(':id')
+  async getById(@Param('id', IdValidationPipe) id: string) {
+    return this.advertismentService.getById(id);
+  }
 }

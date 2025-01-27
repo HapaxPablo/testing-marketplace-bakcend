@@ -47,4 +47,14 @@ export class AdvertismentService {
 
     return deleteAdvertisment;
   }
+
+  async getById(_id: string) {
+    const advertisment = await this.advertismentModel.findById(_id).exec();
+
+    if (!advertisment) {
+      throw new NotFoundException('Advertisment not found');
+    }
+
+    return advertisment;
+  }
 }
